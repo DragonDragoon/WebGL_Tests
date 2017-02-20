@@ -97,15 +97,15 @@
 
       // Animate three.js scene
       function animate() {
-        // Request animation frame and recursively execute function when available
-        requestAnimationFrame(animate);
-
         // Rotate cube mesh
         mesh.rotation.x -= 0.01;
         mesh.rotation.y += 0.01;
 
         // Render WebGL components (Scene, Camera)
         renderer.render(scene, camera);
+
+        // Request animation frame and recursively execute function when available
+        requestAnimationFrame(animate);
       }
     </script>
   </body>
