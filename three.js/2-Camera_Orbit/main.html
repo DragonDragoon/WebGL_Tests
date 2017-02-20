@@ -21,6 +21,7 @@
     </style>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/3d8e0d43/examples/js/Detector.js"></script>
+    <script src="https://rawgit.com/mrdoob/stats.js/master/build/stats.min.js"></script>
     <script src="../lib/OrbitControl.js"></script>
   </head>
   <body>
@@ -32,7 +33,7 @@
       // Globals
       var scene, camera, renderer,
           geometry, material, mesh,
-          controls;
+          controls, stats;
 
       // Container for three.js canvas
       var container = document.querySelector('.three');
@@ -60,6 +61,11 @@
       function init() {
         // Initialize three.js scene
         scene = new THREE.Scene();
+
+        // Initialize performance monitor
+        stats = new Stats();
+        stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+        container.appendChild(stats.dom);
 
         // Initialize renderer
         // THREE.WebGLRenderer({Antialiasing ...})
@@ -122,7 +128,7 @@
 
 				controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
 				
-        //stats.update();
+        stats.update();
 				
         render();
 			}
