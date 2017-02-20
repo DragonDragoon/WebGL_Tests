@@ -20,6 +20,7 @@
       }
     </style>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/3d8e0d43/examples/js/Detector.js"></script>
   </head>
   <body>
     <h1>three.js Hello World Box</h1>
@@ -40,8 +41,17 @@
       var aspect = width / height;
 
       // Main
-      init();
-      animate();
+      // If WebGL is supported
+      if (Detector.webgl) {
+        // Run three.js
+        init();
+        animate();
+      // Else
+      } else {
+        // Show warning that WebGL is not supported
+        var warning = Detector.getWebGLErrorMessage();
+        container.appendChild(warning);
+      }
 
       // Initialize three.js scene and DOM
       function init() {
