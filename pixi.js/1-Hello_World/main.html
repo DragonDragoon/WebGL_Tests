@@ -7,15 +7,34 @@
   </head>
   <body>
     <script type="text/javascript">
+      // Use stronger typing
       'use strict';
 
-      var type = "WebGL";
+      // Globals
+      var type, renderer, stage;
+      
+      // Default type to WebGL
+      type = "WebGL";
 
+      // Check if supported
       if (!PIXI.utils.isWebGLSupported()) {
         type = "canvas";
       }
 
+      // Show version in console
       PIXI.utils.sayHello(type);
+
+      // Create the renderer
+      renderer = PIXI.autoDetectRenderer(256, 256);
+
+      // Add the canvas to the HTML document
+      document.body.appendChild(renderer.view);
+
+      // Create a container object called the `stage`
+      stage = new PIXI.Container();
+
+      // Tell the `renderer` to `render` the `stage`
+      renderer.render(stage);
     </script>
   </body>
 </html>
