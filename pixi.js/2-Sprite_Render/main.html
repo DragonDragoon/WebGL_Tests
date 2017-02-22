@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf8">
+    <meta charset="utf-8">
     <title>Pixi.js Sprite Renderer</title>
     <style>
       * {
@@ -12,5 +12,52 @@
     <script src="../lib/pixi.min.js"></script>
   </head>
   <body>
+    <script type="text/javascript">
+      // Use stronger typing
+      'use strict';
+
+      // Aliases
+      var Container = PIXI.Container,
+          autoDetectRenderer = PIXI.autoDetectRenderer,
+          loader = PIXI.loader,
+          resources = PIXI.loader.resources,
+          Sprite = PIXI.Sprite;
+
+      // Create a Pixi stage and renderer and add the renderer.view to the DOM
+      var stage = new Container(),
+          renderer = autoDetectRenderer(window.innerWidth, window.innerHeight);
+      // Display Renderer over entire window
+      renderer.view.style.position = "absolute";
+      renderer.view.style.display = "block";
+      renderer.autoResize = true;
+      renderer.resize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.view);
+
+      // Load an image and run the `setup` function when it is done
+      loader
+        .add('images/adine_giggle_b.png')
+        .load(setup);
+
+      function setup() {
+        // Create the sprite, add it to the stage and render it
+        var adine = new Sprite(resources['images/adine_giggle_b.png'].texture);
+
+        // Set the sprite's anchor to the center
+        adine.anchor.set(0.5);
+
+        // Change the sprite's position
+        adine.x = renderer.width / 2;
+        adine.y = renderer.height / 2;
+
+        // Change the sprite's resize
+        adine.scale.set(0.5, 0.5);
+
+        // Add Adine to the stage
+        stage.addChild(adine);
+
+        // Render the stage
+        renderer.render(stage);
+      }
+    </script>
   </body>
 </html>
