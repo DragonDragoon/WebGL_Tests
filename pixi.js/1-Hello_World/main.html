@@ -2,7 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hello World</title>
+    <title>Pixi.js Hello World</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
     <script src="../lib/pixi.min.js"></script>
   </head>
   <body>
@@ -12,7 +18,7 @@
 
       // Globals
       var type, renderer, stage;
-      
+
       // Default type to WebGL
       type = "WebGL";
 
@@ -25,7 +31,24 @@
       PIXI.utils.sayHello(type);
 
       // Create the renderer
-      renderer = PIXI.autoDetectRenderer(256, 256);
+      renderer = PIXI.autoDetectRenderer(
+        256, // x - size
+        256, // y - size
+        {
+          antialias: false, // Enable antialias for fonts and graphic primitives
+          transparent: false, // Enable transparency for canvas background
+          resolution: 1 // Varying pixel densities
+        });
+        
+        //renderer.backgroundColor = 0x061639;
+        //renderer.autoResize = true;
+        //renderer.resize(512, 512);
+
+        // Display Renderer over entire window
+        renderer.view.style.position = "absolute";
+        renderer.view.style.display = "block";
+        renderer.autoResize = true;
+        renderer.resize(window.innerWidth, window.innerHeight);
 
       // Add the canvas to the HTML document
       document.body.appendChild(renderer.view);
