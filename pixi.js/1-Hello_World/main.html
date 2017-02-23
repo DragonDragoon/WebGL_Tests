@@ -56,6 +56,19 @@
       // Create a container object called the `stage`
       stage = new PIXI.Container();
 
+      // Create a text sprite
+      var message = new PIXI.Text(
+        "Hello World!",
+        {fontFamily: "Arial", fontSize: 32, fill: "white"}
+      );
+
+      // Set text sprite position and anchor
+      message.anchor.set(0.5);
+      message.position.set(renderer.width / 2, renderer.height / 2);
+
+      // Add text sprite to stage
+      stage.addChild(message);
+
       // Tell the `renderer` to `render` the `stage`
       renderer.render(stage);
     </script>
