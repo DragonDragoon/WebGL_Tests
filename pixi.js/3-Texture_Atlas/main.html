@@ -44,7 +44,7 @@
       var dungeon, explorer, treasure, door, id, scene;
 
       function setup() {
-        // Container for scene
+        // Container for scene group
         scene = new Container();
 
         // There are three ways to make sprites from texture atlas frames
@@ -52,7 +52,6 @@
         // 1. Access the `TextureCache` directly
         var dungeonTexture = TextureCache['dungeon.png'];
         dungeon = new Sprite(dungeonTexture);
-        //stage.addChild(dungeon);
         scene.addChild(dungeon);
 
         // 2. Access the texture using through the loader's `resources`
@@ -63,7 +62,6 @@
 
         // Center the explorer vertically
         explorer.y = scene.height / 2 - explorer.height / 2;
-        //stage.addChild(explorer);
         scene.addChild(explorer);
 
         // 3. Create an optional alias called `id` for all the texture atlas frame id textures
@@ -75,13 +73,11 @@
         // Position the treasure next to the right edge of the canvas
         treasure.x = scene.width - treasure.width - 48;
         treasure.y = scene.height / 2 - treasure.height / 2;
-        //stage.addChild(treasure);
         scene.addChild(treasure);
 
         // Make the exit door
         door = new Sprite(id['door.png']);
         door.position.set(32, 0);
-        //stage.addChild(door);
         scene.addChild(door);
 
         // Make the blobs
@@ -110,13 +106,11 @@
           scene.addChild(blob);
         }
 
-        // Set the sprite's anchor to the center
-        //scene.anchor.set(0.5);
-
         // Change the sprite's position
         scene.x = renderer.width / 2 - scene.width / 2;
         scene.y = renderer.height / 2 - scene.height / 2;
 
+        // Add scene to stasge
         stage.addChild(scene);
 
         // Render the stage
