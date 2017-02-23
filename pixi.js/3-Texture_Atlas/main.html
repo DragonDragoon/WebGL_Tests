@@ -41,15 +41,19 @@
         .load(setup);
 
       // Define globals
-      var dungeon, explorer, treasure, door, id;
+      var dungeon, explorer, treasure, door, id, scene;
 
       function setup() {
+        // Container for scene
+        scene = new Container();
+
         // There are three ways to make sprites from texture atlas frames
 
         // 1. Access the `TextureCache` directly
         var dungeonTexture = TextureCache['dungeon.png'];
         dungeon = new Sprite(dungeonTexture);
-        stage.addChild(dungeon);
+        //stage.addChild(dungeon);
+        scene.addChild(dungeon);
 
         // 2. Access the texture using through the loader's `resources`
         explorer = new Sprite(
@@ -58,25 +62,27 @@
         explorer.x = 68;
 
         // Center the explorer vertically
-        explorer.y = stage.height / 2 - explorer.height / 2;
-        stage.addChild(explorer);
+        explorer.y = scene.height / 2 - explorer.height / 2;
+        //stage.addChild(explorer);
+        scene.addChild(explorer);
 
         // 3. Create an optional alias called `id` for all the texture atlas frame id textures
         id = PIXI.loader.resources['images/treasureHunter.json'].textures;
 
-        // MAke the treasure box udsing the alias
+        // Make the treasure box using the alias
         treasure = new Sprite(id['treasure.png']);
-        stage.addChild(treasure);
 
         // Position the treasure next to the right edge of the canvas
-        treasure.x = stage.width - treasure.width - 48;
-        treasure.y = stage.height / 2 - treasure.height / 2;
-        stage.addChild(treasure);
+        treasure.x = scene.width - treasure.width - 48;
+        treasure.y = scene.height / 2 - treasure.height / 2;
+        //stage.addChild(treasure);
+        scene.addChild(treasure);
 
         // Make the exit door
         door = new Sprite(id['door.png']);
         door.position.set(32, 0);
-        stage.addChild(door);
+        //stage.addChild(door);
+        scene.addChild(door);
 
         // Make the blobs
         var numberOfBlobs = 6,
@@ -93,15 +99,25 @@
           var x = spacing * i + xOffset;
 
           // Give the blob a random y position
-          var y = randomInt(0, stage.height - blob.height);
+          var y = randomInt(0, scene.height - blob.height);
 
           // Set the blob's position
           blob.x = x;
           blob.y = y;
 
           // Add the blob sprite to the stage
-          stage.addChild(blob);
+          //stage.addChild(blob);
+          scene.addChild(blob);
         }
+
+        // Set the sprite's anchor to the center
+        //scene.anchor.set(0.5);
+
+        // Change the sprite's position
+        scene.x = renderer.width / 2 - scene.width / 2;
+        scene.y = renderer.height / 2 - scene.height / 2;
+
+        stage.addChild(scene);
 
         // Render the stage
         renderer.render(stage);
