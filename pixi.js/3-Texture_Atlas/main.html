@@ -28,6 +28,7 @@
       // Create a Pixi stage and renderer and add the renderer.view to the DOM
       var stage = new Container(),
           renderer = autoDetectRenderer(window.innerWidth, window.innerHeight);
+          
       // Display Renderer over entire window
       renderer.view.style.position = 'absolute';
       renderer.view.style.display = 'block';
@@ -102,7 +103,6 @@
           blob.y = y;
 
           // Add the blob sprite to the stage
-          //stage.addChild(blob);
           scene.addChild(blob);
         }
 
