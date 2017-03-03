@@ -21,6 +21,7 @@
       }
     </style>
     <script src="../lib/pixi.min.js"></script>
+    <script src="js/Far.js"></script>
   </head>
   <body>
     <canvas id="container" width="512" height="384"></canvas>
@@ -40,10 +41,8 @@
           }
         );
 
-        let farTexture = PIXI.Texture.fromImage('images/bg-far.png');
-        far = new PIXI.extras.TilingSprite(farTexture, 512, 256);
-        far.position.set(0, 0);
-        far.tilePosition.set(0, 0);
+        var farTexture = PIXI.Texture.fromImage('images/bg-far.png');
+        far = new Far(farTexture, 512, 256);
         stage.addChild(far);
 
         let midTexture = PIXI.Texture.fromImage('images/bg-mid.png');
