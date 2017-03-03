@@ -27,28 +27,41 @@
     <script type="text/javascript">
       'use strict';
 
+      var container, stage, renderer, far, mid;
+
       document.body.onload = init();
 
       function init() {
-        var container = document.querySelector('#container');
-        var stage = new PIXI.Container();
-        var renderer = PIXI.autoDetectRenderer(
+        container = document.querySelector('#container');
+        stage = new PIXI.Container();
+        renderer = PIXI.autoDetectRenderer(
           container.width, container.height, {
             view: container
           }
         );
 
-        var farTexture = PIXI.Texture.fromImage('images/bg-far.png');
-        var far = new PIXI.Sprite(farTexture);
+        let farTexture = PIXI.Texture.fromImage('images/bg-far.png');
+        far = new PIXI.extras.TilingSprite(farTexture, 512, 256);
         far.position.set(0, 0);
+        far.tilePosition.set(0, 0);
         stage.addChild(far);
 
-        var midTexture = PIXI.Texture.fromImage('images/bg-mid.png');
-        var mid = new PIXI.Sprite(midTexture);
+        let midTexture = PIXI.Texture.fromImage('images/bg-mid.png');
+        mid = new PIXI.extras.TilingSprite(midTexture, 512, 256);
         mid.position.set(0, 128);
+        mid.tilePosition.set(0, 0);
         stage.addChild(mid);
 
+        requestAnimationFrame(update);
+      }
+
+      function update() {
+        far.tilePosition.x -= 0.128;
+        mid.tilePosition.x -= 0.64;
+
         renderer.render(stage);
+
+        requestAnimationFrame(update);
       }
     </script>
   </body>
