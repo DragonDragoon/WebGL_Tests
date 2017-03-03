@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Parallax Scrolling Demo</title>
+    <style>
+      body { 
+        background-color: #000000;
+      }
+      canvas { 
+        background-color: #222222;
+      }
+      #container {
+        padding: 0;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+    <script src="../lib/pixi.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.body.onload = init();
+
+      function init() {
+        console.log("init() successfully called.");
+      }
+    </script>
+    <canvas id="container" width="512" height="384"></canvas>
+  </body>
+</html>
