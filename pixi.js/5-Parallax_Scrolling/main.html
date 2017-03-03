@@ -23,13 +23,33 @@
     <script src="../lib/pixi.min.js"></script>
   </head>
   <body>
+    <canvas id="container" width="512" height="384"></canvas>
     <script type="text/javascript">
+      'use strict';
+
       document.body.onload = init();
 
       function init() {
-        console.log("init() successfully called.");
+        var container = document.querySelector('#container');
+        var stage = new PIXI.Container();
+        var renderer = PIXI.autoDetectRenderer(
+          container.width, container.height, {
+            view: container
+          }
+        );
+
+        var farTexture = PIXI.Texture.fromImage('images/bg-far.png');
+        var far = new PIXI.Sprite(farTexture);
+        far.position.set(0, 0);
+        stage.addChild(far);
+
+        var midTexture = PIXI.Texture.fromImage('images/bg-mid.png');
+        var mid = new PIXI.Sprite(midTexture);
+        mid.position.set(0, 128);
+        stage.addChild(mid);
+
+        renderer.render(stage);
       }
     </script>
-    <canvas id="container" width="512" height="384"></canvas>
   </body>
 </html>
