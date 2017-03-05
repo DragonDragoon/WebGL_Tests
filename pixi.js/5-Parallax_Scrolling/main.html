@@ -22,13 +22,15 @@
     </style>
     <script src="../lib/pixi.min.js"></script>
     <script src="js/Far.js"></script>
+    <script src="js/Mid.js"></script>
+    <script src="js/Scroller.js"></script>
   </head>
   <body>
     <canvas id="container" width="512" height="384"></canvas>
     <script type="text/javascript">
       'use strict';
 
-      var container, stage, renderer, far, mid;
+      var container, stage, renderer, far, mid, scroller;
 
       document.body.onload = init();
 
@@ -41,22 +43,13 @@
           }
         );
 
-        var farTexture = PIXI.Texture.fromImage('images/bg-far.png');
-        far = new Far(farTexture, 512, 256);
-        stage.addChild(far);
-
-        let midTexture = PIXI.Texture.fromImage('images/bg-mid.png');
-        mid = new PIXI.extras.TilingSprite(midTexture, 512, 256);
-        mid.position.set(0, 128);
-        mid.tilePosition.set(0, 0);
-        stage.addChild(mid);
+        scroller = new Scroller(stage);
 
         requestAnimationFrame(update);
       }
 
       function update() {
-        far.tilePosition.x -= 0.128;
-        mid.tilePosition.x -= 0.64;
+        scroller.update();
 
         renderer.render(stage);
 
