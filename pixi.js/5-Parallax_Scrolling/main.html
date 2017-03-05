@@ -24,6 +24,7 @@
     <script src="js/Far.js"></script>
     <script src="js/Mid.js"></script>
     <script src="js/Scroller.js"></script>
+    <script src="js/Main.js"></script>
   </head>
   <body>
     <canvas id="container" width="512" height="384"></canvas>
@@ -35,25 +36,7 @@
       document.body.onload = init();
 
       function init() {
-        container = document.querySelector('#container');
-        stage = new PIXI.Container();
-        renderer = PIXI.autoDetectRenderer(
-          container.width, container.height, {
-            view: container
-          }
-        );
-
-        scroller = new Scroller(stage);
-
-        requestAnimationFrame(update);
-      }
-
-      function update() {
-        scroller.moveViewportXBy(5);
-
-        renderer.render(stage);
-
-        requestAnimationFrame(update);
+        var main = new Main();
       }
     </script>
   </body>
