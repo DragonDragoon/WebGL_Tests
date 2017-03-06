@@ -32,11 +32,27 @@ Main.prototype.spriteSheetLoaded = function() {
 
   requestAnimationFrame(this.update.bind(this));
 
-  var slice1 = PIXI.Sprite.fromFrame('edge_01');
-  slice1.position.set(32, 64);
-  this.stage.addChild(slice1);
+  this.pool = new WallSpritesPool();
+  this.wallSlices = [];
+};
 
-  var slice2 = PIXI.Sprite.fromFrame('decoration_03');
-  slice2.position.set(128, 64);
-  this.stage.addChild(slice2);
+Main.prototype.borrowWallSprites = function(num) {
+  for (var i = 0; i < num; i++) {
+    var sprite = this.pool.borrowWindow();
+    sprite.position.set(-32 + (i * 64), 128);
+
+    this.wallSlices.push(sprite);
+
+    this.stage.addChild(sprite);
+  }
+};
+
+Main.prototype.returnWallSprites = function() {
+  for (var i = 0; i < this.wallSlices.length; i++) {
+    var sprite = this.wallSlices[i];
+    this.stage.removeChild(sprite);
+    this.pool.returnWindow(sprite);
+  }
+
+  this.wallSlices = [];
 };
