@@ -38,7 +38,14 @@ Main.prototype.spriteSheetLoaded = function() {
 
 Main.prototype.borrowWallSprites = function(num) {
   for (var i = 0; i < num; i++) {
-    var sprite = this.pool.borrowWindow();
+    var sprite;
+
+    if (i % 2 == 0) {
+      sprite = this.pool.borrowWindow();
+    } else {
+      sprite = this.pool.borrowDecoration();
+    }
+
     sprite.position.set(-32 + (i * 64), 128);
 
     this.wallSlices.push(sprite);
@@ -51,7 +58,12 @@ Main.prototype.returnWallSprites = function() {
   for (var i = 0; i < this.wallSlices.length; i++) {
     var sprite = this.wallSlices[i];
     this.stage.removeChild(sprite);
-    this.pool.returnWindow(sprite);
+    
+    if (i % 2 == 0) {
+      this.pool.returnWindow(sprite);
+    } else {
+      this.pool.returnDecoration(sprite);
+    }
   }
 
   this.wallSlices = [];
