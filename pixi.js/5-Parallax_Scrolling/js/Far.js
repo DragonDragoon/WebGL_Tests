@@ -1,5 +1,5 @@
 function Far() {
-  var texture = PIXI.Texture.fromImage('images/bg-far.png');
+  var texture = PIXI.Texture.fromImage('res/bg-far.png');
   PIXI.extras.TilingSprite.call(this, texture, 512, 256);
 
   this.position.set(0, 0);
