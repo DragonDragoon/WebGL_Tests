@@ -1,6 +1,8 @@
 function WallSpritesPool() {
   this.createWindows();
   this.createDecorations();
+  this.createFrontEdges();
+  this.createBackEdges();
 }
 
 WallSpritesPool.prototype.createWindows = function() {
@@ -22,6 +24,24 @@ WallSpritesPool.prototype.createDecorations = function() {
   this.shuffle(this.decorations);
 };
 
+WallSpritesPool.prototype.createFrontEdges = function() {
+  this.frontEdges = [];
+
+  this.addFrontEdgeSprites(2, 'edge_01');
+  this.addFrontEdgeSprites(2, 'edge_02');
+
+  this.shuffle(this.frontEdges);
+};
+
+WallSpritesPool.prototype.createBackEdges = function() {
+  this.backEdges = [];
+
+  this.addBackEdgeSprites(2, 'edge_01');
+  this.addBackEdgeSprites(2, 'edge_02');
+
+  this.shuffle(this.backEdges);
+};
+
 WallSpritesPool.prototype.addWindowSprites = function(amount, frameID) {
   for (var i = 0; i < amount; i++) {
     var sprite = PIXI.Sprite.fromFrame(frameID);
@@ -33,6 +53,22 @@ WallSpritesPool.prototype.addDecorationSprites = function(amount, frameID) {
   for (var i = 0; i < amount; i++) {
     var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
     this.decorations.push(sprite);
+  }
+};
+
+WallSpritesPool.prototype.addFrontEdgeSprites = function(amount, frameID) {
+  for (var i = 0; i < amount; i++) {
+    var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
+    this.frontEdges.push(sprite);
+  }
+};
+
+WallSpritesPool.prototype.addBackEdgeSprites = function(amount, frameID) {
+  for (var i = 0; i < amount; i++) {
+    var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
+    sprite.anchor.set(1, 0);
+    sprite.scale.set(-1, 1);
+    this.backEdges.push(sprite);
   }
 };
 
@@ -50,6 +86,22 @@ WallSpritesPool.prototype.borrowDecoration = function() {
 
 WallSpritesPool.prototype.returnDecoration = function(sprite) {
   this.decorations.push(sprite);
+};
+
+WallSpritesPool.prototype.borrowFrontEdge = function() {
+  return this.frontEdges.shift();
+};
+
+WallSpritesPool.prototype.returnFrontEdge = function(sprite) {
+  this.frontEdges.push(sprite);
+};
+
+WallSpritesPool.prototype.borrowBackEdge = function() {
+  return this.backEdges.shift();
+};
+
+WallSpritesPool.prototype.returnBackEdge = function(sprite) {
+  this.backEdges.push(sprite);
 };
 
 WallSpritesPool.prototype.shuffle = function(array) {

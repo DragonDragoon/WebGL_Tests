@@ -68,3 +68,49 @@ Main.prototype.returnWallSprites = function() {
 
   this.wallSlices = [];
 };
+
+Main.prototype.generateTestWallSpan = function() {
+  var lookupTable = [
+    this.pool.borrowFrontEdge,  // 1st Slice
+    this.pool.borrowWindow,     // 2nd Slice
+    this.pool.borrowDecoration, // 3rd Slice
+    this.pool.borrowWindow,     // 4th Slice
+    this.pool.borrowDecoration, // 5th Slice
+    this.pool.borrowWindow,     // 6th Slice
+    this.pool.borrowBackEdge    // 7th Slice
+  ];
+
+  for (var i = 0; i < lookupTable.length; i++) {
+    var func = lookupTable[i];
+    
+    var sprite = func.call(this.pool);
+    sprite.position.set(32 + (i * 64), 128);
+
+    this.wallSlices.push(sprite);
+
+    this.stage.addChild(sprite);
+  }
+};
+
+Main.prototype.clearTestWallSpan = function() {
+  var lookupTable = [
+    this.pool.borrowFrontEdge,  // 1st Slice
+    this.pool.borrowWindow,     // 2nd Slice
+    this.pool.borrowDecoration, // 3rd Slice
+    this.pool.borrowWindow,     // 4th Slice
+    this.pool.borrowDecoration, // 5th Slice
+    this.pool.borrowWindow,     // 6th Slice
+    this.pool.borrowBackEdge    // 7th Slice
+  ];
+
+  for (var i = 0; i < lookupTable.length; i++) {
+    var func = lookupTable[i];
+    var sprite = this.wallSlices[i];
+
+    this.stage.removeChild(sprite);
+
+    func.call(this.pool, sprite);
+  }
+
+  this.wallSlices = [];
+};
