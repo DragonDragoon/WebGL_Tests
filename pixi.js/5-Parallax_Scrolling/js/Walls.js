@@ -17,13 +17,33 @@ Walls.VIEWPORT_WIDTH = 512;
 Walls.VIEWPORT_NUM_SLICES = Math.ceil(Walls.VIEWPORT_WIDTH/WallSlice.WIDTH) + 1;
 
 Walls.prototype.setViewportX = function(viewportX) {
+  var maxViewportX = (this.slices.length - Walls.VIEWPORT_NUM_SLICES) * WallSlice.WIDTH;
 
+  if (viewportX < 0) {
+    viewportX = 0;
+  } else if (viewportX >= maxViewportX) {
+    viewportX = maxViewportX;
+  }
+
+  this.viewportX = viewportX;
 };
 
 Walls.prototype.addSlice = function(sliceType, y) {
   var slice = new WallSlice(sliceType, y);
   this.slices.push(slice);
-}
+};
+
+Walls.prototype.checkViewportXBounds = function(viewportX) {
+  var maxViewportX = (this.slices.length - Walls.VIEWPORT_NUM_SLICES) * WallSlice.WIDTH;
+
+  if (viewportX < 0) {
+    viewportX = 0;
+  } else if (viewportX > maxViewportX) {
+    viewportX = maxViewportX;
+  }
+
+  return viewportX;
+};
 
 Walls.prototype.createLookupTables = function() {
   this.borrowWallSpriteLookup = [];
