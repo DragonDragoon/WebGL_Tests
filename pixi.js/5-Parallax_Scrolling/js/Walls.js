@@ -17,15 +17,10 @@ Walls.VIEWPORT_WIDTH = 512;
 Walls.VIEWPORT_NUM_SLICES = Math.ceil(Walls.VIEWPORT_WIDTH/WallSlice.WIDTH) + 1;
 
 Walls.prototype.setViewportX = function(viewportX) {
-  var maxViewportX = (this.slices.length - Walls.VIEWPORT_NUM_SLICES) * WallSlice.WIDTH;
+  this.viewportX = this.checkViewportXBounds(viewportX);
 
-  if (viewportX < 0) {
-    viewportX = 0;
-  } else if (viewportX >= maxViewportX) {
-    viewportX = maxViewportX;
-  }
-
-  this.viewportX = viewportX;
+  var prevVireportSliceX = this.viewportSliceX;
+  this.viewportSliceX = Math.floor(this.viewportX / WallSlice.WIDTH);
 };
 
 Walls.prototype.addSlice = function(sliceType, y) {
