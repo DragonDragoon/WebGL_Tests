@@ -13,8 +13,8 @@ function Scroller(stage) {
 
 Scroller.prototype.setViewportX = function(viewportX) {
   this.viewportX = viewportX;
-  this.mid.setViewportX(viewportX);
   this.far.setViewportX(viewportX);
+  this.mid.setViewportX(viewportX);
   this.front.setViewportX(viewportX);
 };
 

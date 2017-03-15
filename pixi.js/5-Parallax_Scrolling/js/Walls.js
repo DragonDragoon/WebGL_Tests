@@ -87,7 +87,7 @@ Walls.prototype.createLookupTables = function() {
   this.returnWallSpriteLookup[SliceType.FRONT] = this.pool.returnFrontEdge;
   this.returnWallSpriteLookup[SliceType.BACK] = this.pool.returnBackEdge;
   this.returnWallSpriteLookup[SliceType.STEP] = this.pool.returnStep;
-  this.returnWallSpriteLookup[SliceType.DECORATION] = this.pool.returnStep;
+  this.returnWallSpriteLookup[SliceType.DECORATION] = this.pool.returnDecoration;
   this.returnWallSpriteLookup[SliceType.WINDOW] = this.pool.returnWindow;
 };
 
