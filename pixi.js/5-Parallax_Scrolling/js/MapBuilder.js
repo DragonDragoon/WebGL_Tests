@@ -12,10 +12,45 @@ MapBuilder.WALL_HEIGHTS = [
 ];
 
 MapBuilder.prototype.createMap = function() {
-
+  this.createWallSpan(3, 9, true);
+  this.createGap(1);
+  this.createWallSpan(1, 30);
+  this.createGap(1);
+  this.createWallSpan(2, 18);
+  this.createGap(1);
+  this.createSteppedWallSpan(2, 5, 28);
+  this.createGap(1);
+  this.createWallSpan(1, 10);
+  this.createGap(1);
+  this.createWallSpan(2, 6); 
+  this.createGap(1);
+  this.createWallSpan(1, 8);
+  this.createGap(1);
+  this.createWallSpan(2, 6);
+  this.createGap(1);
+  this.createWallSpan(1, 8);
+  this.createGap(1)
+  this.createWallSpan(2, 7);
+  this.createGap(1);
+  this.createWallSpan(1, 16);
+  this.createGap(1);
+  this.createWallSpan(2, 6);
+  this.createGap(1);
+  this.createWallSpan(1, 22);
+  this.createGap(2);
+  this.createWallSpan(2, 14);
+  this.createGap(2);
+  this.createWallSpan(3, 8);
+  this.createGap(2);
+  this.createSteppedWallSpan(3, 5, 12);
+  this.createGap(3);
+  this.createWallSpan(0, 8);
+  this.createGap(3);
+  this.createWallSpan(1, 50);
+  this.createGap(20);
 };
 
-MapBuilder.prototype.createGap = function(spenLength) {
+MapBuilder.prototype.createGap = function(spanLength) {
   for (var i = 0; i < spanLength; i++) {
     this.walls.addSlice(SliceType.GAP);
   }

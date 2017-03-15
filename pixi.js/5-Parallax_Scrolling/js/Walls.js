@@ -5,7 +5,6 @@ function Walls() {
   this.createLookupTables();
 
   this.slices = [];
-  this.createTestMap();
 
   this.viewportX = 0;
   this.viewportSliceX = 0;
@@ -99,6 +98,10 @@ Walls.prototype.returnWallSprite = function(sliceType, sliceSprite) {
   return this.returnWallSpriteLookup[sliceType].call(this.pool, sliceSprite);
 };
 
+/**
+ * Used for Testing
+ */
+/*
 Walls.prototype.createTestMap = function() {
   for (var i = 0; i < 10; i++) {
     this.createTestWallSpan();
@@ -132,3 +135,4 @@ Walls.prototype.createTestSteppedWallSpan = function() {
 Walls.prototype.createTestGap = function() {
   this.addSlice(SliceType.GAP);
 };
+*/
