@@ -47,9 +47,13 @@ Walls.prototype.addNewSlices = function() {
   for (var i = this.viewportSliceX, sliceIndex = 0; i < this.viewportSliceX + Walls.VIEWPORT_NUM_SLICES; i++, sliceIndex++) {
     var slice = this.slices[i];
     if (slice.sprite == null && slice.type != SliceType.GAP) {
-      // Associate the slice with a sprite and update the sprite's position
+      slice.sprite = this.borrowWallSprite(slice.type);
+
+      slice.sprite.position.set(firstX + (sliceIndex * WallSlice.WIDTH), slice.y);
+
+      this.addChild(slice.sprite);
     } else if (slice.sprite != null) {
-      // The slice is already associated with a sprite, just update its position
+      slice.sprite.position.set(firstX + (sliceIndex * WallSlice.WIDTH), slice.sprite.position.y);
     }
   }
 };
