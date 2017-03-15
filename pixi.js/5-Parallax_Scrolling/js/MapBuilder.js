@@ -41,6 +41,16 @@ MapBuilder.prototype.createWallSpan = function(heightIndex, spanLength, noFront,
     }
 };
 
+MapBuilder.prototype.createSteppedWallSpan = function(heightIndex, spanALength, spanBLength) {
+  if (heightIndex < 2) {
+    heightIndex = 2;
+  }
+
+  this.createWallSpan(heightIndex, spanALength, false, true);
+  this.addWallStep(heightIndex - 2);
+  this.createWallSpan(heightIndex - 2, spanBLength - 1, true, false);
+};
+
 MapBuilder.prototype.addWallFront = function(heightIndex) {
   var y = MapBuilder.WALL_HEIGHTS[heightIndex];
   this.walls.addSlice(SliceType.FRONT, y);
