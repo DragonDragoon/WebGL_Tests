@@ -29,20 +29,16 @@
     <script src="js/WallSlice.js"></script>
     <script src="js/Walls.js"></script>
     <script src="js/MapBuilder.js"></script>
-    <script src="js/Main.js"></script>
+    <script src="js/ParallaxScroller.js"></script>
   </head>
   <body>
     <canvas id="container" width="512" height="384"></canvas>
     <script type="text/javascript">
       'use strict';
 
-      var main;
+      let parallax_scroller;
       
-      document.body.onload = init();
-
-      function init() {
-        main = new Main();
-      }
+      document.addEventListener("DOMContentLoaded", () => parallax_scroller = new ParallaxScroller());
     </script>
   </body>
 </html>

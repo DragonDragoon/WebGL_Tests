@@ -1,4 +1,4 @@
-function Main() {
+function ParallaxScroller() {
   this.container = document.querySelector('#container');
   this.stage = new PIXI.Container();
   this.renderer = PIXI.autoDetectRenderer(
@@ -7,28 +7,28 @@ function Main() {
     }
   );
 
-  this.scrollSpeed = Main.MIN_SCROLL_SPEED;
+  this.scrollSpeed = ParallaxScroller.MIN_SCROLL_SPEED;
 
   this.loadSpriteSheet();
 }
 
-Main.MIN_SCROLL_SPEED = 5;
-Main.MAX_SCROLL_SPEED = 15;
-Main.SCROLL_ACCELERATION = 0.005;
+ParallaxScroller.MIN_SCROLL_SPEED = 5;
+ParallaxScroller.MAX_SCROLL_SPEED = 15;
+ParallaxScroller.SCROLL_ACCELERATION = 0.005;
 
-Main.prototype.update = function () {
+ParallaxScroller.prototype.update = function () {
   this.scroller.moveViewportXBy(this.scrollSpeed);
 
-  this.scrollSpeed += Main.SCROLL_ACCELERATION;
-  if (this.scrollSpeed > Main.MAX_SCROLL_SPEED) {
-    this.scrollSpeed = Main.MAX_SCROLL_SPEED;
+  this.scrollSpeed += ParallaxScroller.SCROLL_ACCELERATION;
+  if (this.scrollSpeed > ParallaxScroller.MAX_SCROLL_SPEED) {
+    this.scrollSpeed = ParallaxScroller.MAX_SCROLL_SPEED;
   }
 
   this.renderer.render(this.stage);
   requestAnimationFrame(this.update.bind(this));
 };
 
-Main.prototype.loadSpriteSheet = function () {
+ParallaxScroller.prototype.loadSpriteSheet = function () {
   var loader = PIXI.loader;
   loader.add('wall', 'res/wall.json');
   loader.add('bg-mid', 'res/bg-mid.png');
@@ -37,13 +37,13 @@ Main.prototype.loadSpriteSheet = function () {
   loader.load();
 };
 
-Main.prototype.spriteSheetLoaded = function () {
+ParallaxScroller.prototype.spriteSheetLoaded = function () {
   this.scroller = new Scroller(this.stage);
 
   requestAnimationFrame(this.update.bind(this));
 };
 
-Main.prototype.borrowWallSprites = function (num) {
+ParallaxScroller.prototype.borrowWallSprites = function (num) {
   for (var i = 0; i < num; i++) {
     var sprite;
 
@@ -61,7 +61,7 @@ Main.prototype.borrowWallSprites = function (num) {
   }
 };
 
-Main.prototype.returnWallSprites = function () {
+ParallaxScroller.prototype.returnWallSprites = function () {
   for (var i = 0; i < this.wallSlices.length; i++) {
     var sprite = this.wallSlices[i];
     this.stage.removeChild(sprite);
