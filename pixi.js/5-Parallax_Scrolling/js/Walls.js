@@ -21,6 +21,8 @@ Walls.prototype.setViewportX = function(viewportX) {
 
   var prevVireportSliceX = this.viewportSliceX;
   this.viewportSliceX = Math.floor(this.viewportX / WallSlice.WIDTH);
+
+  this.addNewSlices();
 };
 
 Walls.prototype.addSlice = function(sliceType, y) {
@@ -38,6 +40,18 @@ Walls.prototype.checkViewportXBounds = function(viewportX) {
   }
 
   return viewportX;
+};
+
+Walls.prototype.addNewSlices = function() {
+  var firstX = -(this.viewportX % WallSlice.WIDTH);
+  for (var i = this.viewportSliceX, sliceIndex = 0; i < this.viewportSliceX + Walls.VIEWPORT_NUM_SLICES; i++, sliceIndex++) {
+    var slice = this.slices[i];
+    if (slice.sprite == null && slice.type != SliceType.GAP) {
+      // Associate the slice with a sprite and update the sprite's position
+    } else if (slice.sprite != null) {
+      // The slice is already associated with a sprite, just update its position
+    }
+  }
 };
 
 Walls.prototype.createLookupTables = function() {
