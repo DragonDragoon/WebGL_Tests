@@ -19,9 +19,10 @@ Walls.VIEWPORT_NUM_SLICES = Math.ceil(Walls.VIEWPORT_WIDTH/WallSlice.WIDTH) + 1;
 Walls.prototype.setViewportX = function(viewportX) {
   this.viewportX = this.checkViewportXBounds(viewportX);
 
-  var prevVireportSliceX = this.viewportSliceX;
+  var prevViewportSliceX = this.viewportSliceX;
   this.viewportSliceX = Math.floor(this.viewportX / WallSlice.WIDTH);
 
+  this.removeOldSlices(prevViewportSliceX);
   this.addNewSlices();
 };
 
@@ -40,6 +41,22 @@ Walls.prototype.checkViewportXBounds = function(viewportX) {
   }
 
   return viewportX;
+};
+
+Walls.prototype.removeOldSlices = function(prevViewportSliceX) {
+  var numOldSlices = this.viewportSliceX - prevViewportSliceX;
+  if (numOldSlices > Walls.VIEWPORT_NUM_SLICES) {
+    numOldSlices = Walls.VIEWPORT_NUM_SLICES;
+  }
+
+  for (var i = prevViewportSliceX; i < prevViewportSliceX + numOldSlices; i++) {
+    var slice = this.slices[i];
+    if(slice.sprite != null) {
+      this.returnWallSprite(slice.type, slice.sprite);
+      this.removeChild(slice.sprite);
+      slice.sprite = null;
+    }
+  }
 };
 
 Walls.prototype.addNewSlices = function() {
@@ -69,7 +86,7 @@ Walls.prototype.createLookupTables = function() {
   this.returnWallSpriteLookup = [];
   this.returnWallSpriteLookup[SliceType.FRONT] = this.pool.returnFrontEdge;
   this.returnWallSpriteLookup[SliceType.BACK] = this.pool.returnBackEdge;
-  this.returnWallSpriteLookup[SliceType.Step] = this.pool.returnStep;
+  this.returnWallSpriteLookup[SliceType.STEP] = this.pool.returnStep;
   this.returnWallSpriteLookup[SliceType.DECORATION] = this.pool.returnStep;
   this.returnWallSpriteLookup[SliceType.WINDOW] = this.pool.returnWindow;
 };
