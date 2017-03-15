@@ -12,5 +12,31 @@ MapBuilder.WALL_HEIGHTS = [
 ];
 
 MapBuilder.prototype.createMap = function() {
-  
+
+};
+
+MapBuilder.prototype.addWallFront = function(heightIndex) {
+  var y = MapBuilder.WALL_HEIGHTS[heightIndex];
+  this.walls.addSlice(SliceType.FRONT, y);
+};
+
+MapBuilder.prototype.addWallBack = function(heightIndex) {
+  var y = MapBuilder.WALL_HEIGHTS[heightIndex];
+  this.walls.addSlice(SliceType.BACK, y);
+};
+
+MapBuilder.prototype.addWallMid = function(heightIndex, spanLength) {
+  var y = MapBuilder.WALL_HEIGHTS[heightIndex];
+  for (var i = 0; i < spanLength; i++) {
+    if (i % 2 == 0) {
+      this.walls.addSlice(SliceType.WINDOW, y);
+    } else {
+      this.walls.addSlice(SliceType.DECORATION, y);
+    }
+  }
+};
+
+MapBuilder.prototype.addWallStep = function(heightIndex) {
+  var y = MapBuilder.WALL_HEIGHTS[heightIndex];
+  this.walls.addSlice(SliceType.STEP, y);
 };
