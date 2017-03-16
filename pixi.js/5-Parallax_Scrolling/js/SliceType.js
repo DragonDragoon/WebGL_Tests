@@ -1,7 +1,16 @@
+/**
+ * @name SliceType.js
+ * @author William Woodard
+ * @desc Class enumerator for front wall slice types
+ *        @class SliceType
+ * @required none
+ */
 class SliceType {
-  // Nothing
+  // Hopefully the ES7 specfication will give us better class implementation
+  // Still have to put const/static outside of class, after it it declared (see bottom)
 }
 
+// Constants (Why do I still have to do this in ES6? Don't call these classes!)
 SliceType.FRONT      = 0;
 SliceType.BACK       = 1;
 SliceType.STEP       = 2;
