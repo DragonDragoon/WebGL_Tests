@@ -3,6 +3,7 @@
  * @author William Woodard
  * @desc Class holds pool data structure for sprite memory allocation
  *        @class {WallSpritesPool}
+ *          @constant NUM_FRONT, NUM_BACK, NUM_STEP, NUM_DECORATION, NUM_WINDOW
  *          @constructor()
  *          @method create() => null
  *          @method add({SliceType} type) => null

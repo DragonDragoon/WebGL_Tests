@@ -4,6 +4,7 @@
  * @desc Class manages far range parallax sprite
  *        @class {Far}
  *        @extends {PIXI.extras.TilingSprite}
+ *          @constant DELTA_X
  *          @constructor()
  *          @method setViewportX({Number} newViewportX) => null
  * @required PIXI.js

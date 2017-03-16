@@ -3,6 +3,7 @@
  * @author William Woodard
  * @desc Class enumerator for front wall slice types
  *        @class {SliceType}
+ *          @constant FRONT, BACK, STEP, DECORATION, WINDOW, GAP
  * @required none
  */
 class SliceType {

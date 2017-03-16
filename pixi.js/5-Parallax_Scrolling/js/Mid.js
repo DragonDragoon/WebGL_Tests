@@ -4,6 +4,7 @@
  * @desc Class manages mid range parallax sprite
  *        @class {Mid}
  *        @extends {PIXI.extras.TilingSprite}
+ *          @constant DELTA_X
  *          @constructor()
  *          @method setViewportX({Number} newViewportX) => null
  * @required PIXI.js
