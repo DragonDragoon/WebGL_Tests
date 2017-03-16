@@ -14,7 +14,7 @@ class Mid extends PIXI.extras.TilingSprite {
 
   /**
    * @constructor Mid.constructor
-   * @desc Create sprit from texture image and 
+   * @desc Create sprite from texture image and 
    *         set default position and tile position
    *         initialize viewportX position to 0
    * @return null
