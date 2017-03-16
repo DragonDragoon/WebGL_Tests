@@ -54,35 +54,35 @@ class WallSpritesPool {
   add(type, amount, frameID) {
     switch (type) {
       case SliceType.FRONT:
-        for (var i = 0; i < amount; i++) {
-          var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
+        for (let i = 0; i < amount; i++) {
+          let sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
           this.frontEdges.push(sprite);
         }
         break;
       case SliceType.BACK:
-        for (var i = 0; i < amount; i++) {
-          var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
+        for (let i = 0; i < amount; i++) {
+          let sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
           sprite.anchor.set(1, 0);
           sprite.scale.set(-1, 1);
           this.backEdges.push(sprite);
         }
         break;
       case SliceType.STEP:
-        for (var i = 0; i < amount; i++) {
-          var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
+        for (let i = 0; i < amount; i++) {
+          let sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
           sprite.anchor.set(0, 0.25);
           this.steps.push(sprite);
         }
         break;
       case SliceType.DECORATION:
-        for (var i = 0; i < amount; i++) {
-          var sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
+        for (let i = 0; i < amount; i++) {
+          let sprite = new PIXI.Sprite(PIXI.Texture.fromFrame(frameID));
           this.decorations.push(sprite);
         }
         break;
       case SliceType.WINDOW:
-        for (var i = 0; i < amount; i++) {
-          var sprite = PIXI.Sprite.fromFrame(frameID);
+        for (let i = 0; i < amount; i++) {
+          let sprite = PIXI.Sprite.fromFrame(frameID);
           this.windows.push(sprite);
         }
         break;
@@ -136,11 +136,11 @@ class WallSpritesPool {
   }
 
   shuffle(array) {
-    var len = array.length;
-    var shuffles = len * 3;
-    for (var i = 0; i < shuffles; i++) {
-      var wallSlice = array.pop();
-      var pos = Math.floor(Math.random() * (len - 1));
+    let len = array.length;
+    let shuffles = len * 3;
+    for (let i = 0; i < shuffles; i++) {
+      let wallSlice = array.pop();
+      let pos = Math.floor(Math.random() * (len - 1));
       array.splice(pos, 0, wallSlice);
     }
   }
