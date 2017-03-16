@@ -1,4 +1,6 @@
-function SliceType() {}
+class SliceType {
+  // Nothing
+}
 
 SliceType.FRONT      = 0;
 SliceType.BACK       = 1;
