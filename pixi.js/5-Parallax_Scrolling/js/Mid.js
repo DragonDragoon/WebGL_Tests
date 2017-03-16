@@ -6,7 +6,7 @@
  *        @extends {PIXI.extras.TilingSprite}
  *          @constant DELTA_X
  *          @constructor()
- *          @method setViewportX({Number} newViewportX) => null
+ *          @method setViewportX({Number} newViewportX) => {null}
  * @required PIXI.js
  */
 class Mid extends PIXI.extras.TilingSprite {
@@ -18,7 +18,7 @@ class Mid extends PIXI.extras.TilingSprite {
    * @desc Create sprite from texture image and 
    *         set default position and tile position
    *         initialize viewportX position to 0
-   * @return null
+   * @return {null}
    */
   constructor() {
     let texture = PIXI.Texture.fromImage('res/bg-mid.png');
@@ -35,7 +35,7 @@ class Mid extends PIXI.extras.TilingSprite {
    * @method Mid.setViewportX
    * @param {Number} newViewportX X-Coordinate of new viewport
    * @desc Set current viewport to new viewport x-coordinate
-   * @return null
+   * @return {null}
    */
   setViewportX(newViewportX) {
     let distanceTravelled = newViewportX - this.viewportX;

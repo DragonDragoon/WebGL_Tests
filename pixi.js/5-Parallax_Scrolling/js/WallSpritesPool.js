@@ -5,11 +5,11 @@
  *        @class {WallSpritesPool}
  *          @constant NUM_FRONT, NUM_BACK, NUM_STEP, NUM_DECORATION, NUM_WINDOW
  *          @constructor()
- *          @method create() => null
- *          @method add({SliceType} type) => null
+ *          @method create() => {null}
+ *          @method add({SliceType} type) => {null}
  *          @method borrow({SliceType} type, {Number} amount, {String} frameID) => {PIXI.Sprite} *
- *          @method return({SliceType} type, {PIXI.Sprite} sprite) => null
- *          @method shuffle({Array} array) => null
+ *          @method return({SliceType} type, {PIXI.Sprite} sprite) => {null}
+ *          @method shuffle({Array} array) => {null}
  * @required PIXI.js
  */
 class WallSpritesPool {
@@ -19,7 +19,7 @@ class WallSpritesPool {
   /**
    * @constructor WallSpritesPool.constructor
    * @desc Create all needed sprites and add them to pool allocation
-   * @return null
+   * @return {null}
    */
   constructor() {
     this.create(SliceType.WINDOW);
@@ -36,7 +36,7 @@ class WallSpritesPool {
    *         create pool for sprite type
    *         allocate set amount of slice type to pool
    *         shuffle pool
-   * @return null
+   * @return {null}
    */
   create(type) {
     switch (type) {
@@ -91,7 +91,7 @@ class WallSpritesPool {
    *         for amount of sprites to add,
    *           create sprite from frame ID
    *           push sprite into pool
-   * @return null
+   * @return {null}
    */
   add(type, amount, frameID) {
     switch (type) {
@@ -168,7 +168,7 @@ class WallSpritesPool {
    * @param {PIXI.Sprite} sprite Sprite to return to pool
    * @desc Determine the type of sprite and then
    *         push sprite into pool
-   * @return null
+   * @return {null}
    */
   return(type, sprite) {
     switch (type) {
@@ -197,7 +197,7 @@ class WallSpritesPool {
    * @param {Array} array Pool of sprites
    * @desc Shuffle array of sprites for randomness
    *       Destroys array integrity
-   * @return null
+   * @return {null}
    */
   shuffle(array) {
     let len = array.length;

@@ -14,7 +14,7 @@ class WallSlice {
   /**
    * @constructor WallSlice.constructor
    * @desc Create wall slice data structure for type, y-coordinate, and sprite
-   * @return null
+   * @return {null}
    */
   constructor(type, y) {
     this.type = type;

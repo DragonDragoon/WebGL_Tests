@@ -6,11 +6,11 @@
  *        @extends {PIXI.Container}
  *          @constant VIEWPORT_WIDTH, VIEWPORT_NUM_SLICES
  *          @constructor()
- *          @method setViewportX({Number} viewportX) => null
- *          @method addSlice({SliceType} sliceType, {Number} y) => null
+ *          @method setViewportX({Number} viewportX) => {null}
+ *          @method addSlice({SliceType} sliceType, {Number} y) => {null}
  *          @method checkViewportXBounds({Number} viewportX) => {Number} viewportX
- *          @method removeOldSlices({Number} prevViewportSliceX) => null
- *          @method addNewSlices() => null
+ *          @method removeOldSlices({Number} prevViewportSliceX) => {null}
+ *          @method addNewSlices() => {null}
  * @required PIXI.js
  */
 class Walls extends PIXI.Container {
@@ -22,7 +22,7 @@ class Walls extends PIXI.Container {
    * @desc Create wall pool sprites and 
    *         initialize wall slices array
    *         initialize viewport and slice viewport x-coordinates to zero
-   * @return null
+   * @return {null}
    */
   constructor() {
     super();
@@ -41,7 +41,7 @@ class Walls extends PIXI.Container {
    * @desc Set current viewport for far, mid, and front to new viewport x-coordinate
    *         remove old slices from viewport
    *         add new slices to viewport
-   * @return null
+   * @return {null}
    */
   setViewportX(viewportX) {
     this.viewportX = this.checkViewportXBounds(viewportX);
@@ -58,7 +58,7 @@ class Walls extends PIXI.Container {
    * @param {SliceType} sliceType Enumerator of wall slice type
    * @param {Number} y-coordinate of slice
    * @desc Create new wall slice with y coordinate and push to slices array
-   * @return null
+   * @return {null}
    */
   addSlice(sliceType, y) {
     let slice = new WallSlice(sliceType, y);
@@ -90,7 +90,7 @@ class Walls extends PIXI.Container {
    * @desc Set number of old slices bound to number of slices set and
    *         return old slice to pool and
    *         remove old slices not needed anymore for parallax
-   * @return null
+   * @return {null}
    */
   removeOldSlices(prevViewportSliceX) {
     let numOldSlices = this.viewportSliceX - prevViewportSliceX;
@@ -111,7 +111,7 @@ class Walls extends PIXI.Container {
   /**
    * @method Walls.addNewSlices
    * @desc Add new slices when needed to pool for parallax as old ones are removed
-   * @return null
+   * @return {null}
    */
   addNewSlices() {
     let firstX = -(this.viewportX % WallSlice.WIDTH);

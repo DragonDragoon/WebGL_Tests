@@ -5,11 +5,11 @@
  *        @class {ParallaxScroller}
  *          @constant MIN_SCROLL_SPEED, MAX_SCROLL_SPEED, SCROLL_ACCELERATION
  *          @constructor()
- *          @method update() => null
- *          @method loadSpriteSheet() => null
- *          @method spriteSheetLoaded() => null
- *          @method borrowWallSprites({Number} num) => null
- *          @method returnWallSprites() => null
+ *          @method update() => {null}
+ *          @method loadSpriteSheet() => {null}
+ *          @method spriteSheetLoaded() => {null}
+ *          @method borrowWallSprites({Number} num) => {null}
+ *          @method returnWallSprites() => {null}
  * @required PIXI.js
  */
 class ParallaxScroller {
@@ -20,7 +20,7 @@ class ParallaxScroller {
    * @constructor ParallaxScroller.constructor
    * @desc Initialize 
    *         PIXI stage, renderer, scrollspeed, and load sprites
-   * @return null
+   * @return {null}
    */
   constructor() {
     this.container = document.querySelector('#container');
@@ -45,7 +45,7 @@ class ParallaxScroller {
    *         move viewport by current scrolling speed
    *         incremement scrolling speed by acceleration
    *         update PIXI Renderer on requestAnimationFrame
-   * @return null
+   * @return {null}
    */
   update() {
     this.scroller.moveViewportXBy(this.scrollSpeed);
@@ -63,7 +63,7 @@ class ParallaxScroller {
    * @method ParallaxScroller.loadSpriteSheet
    * @desc Add sprites to PIXI loader
    *       Run ParallaxScroller.spriteSheetLoaded when loading completes
-   * @return null
+   * @return {null}
    */
   loadSpriteSheet() {
     let loader = PIXI.loader;
@@ -79,7 +79,7 @@ class ParallaxScroller {
    * @desc Now that loading has completed,
    *         initialize scroller
    *         update first frame
-   * @return null
+   * @return {null}
    */
   spriteSheetLoaded() {
     this.scroller = new Scroller(this.stage);
@@ -94,7 +94,7 @@ class ParallaxScroller {
    *         set their position
    *         push them to the active wall slices
    *         add them to stage
-   * @return null
+   * @return {null}
    */
   borrowWallSprites(num) {
     for (let i = 0; i < num; i++) {
@@ -120,7 +120,7 @@ class ParallaxScroller {
    * @desc Return window and decoration sprites from pool, and
    *         remove sprites from stage
    *         clear active wall slices
-   * @return null
+   * @return {null}
    */
   returnWallSprites() {
     for (let i = 0; i < this.wallSlices.length; i++) {

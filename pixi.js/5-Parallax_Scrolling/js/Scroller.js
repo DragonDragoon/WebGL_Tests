@@ -4,9 +4,9 @@
  * @desc Class manages viewport scrolling
  *        @class {Scroller}
  *          @constructor({PIXI.Container} stage)
- *          @method setViewportX({Number} viewportX) => null
+ *          @method setViewportX({Number} viewportX) => {null}
  *          @method getViewportX() => {Number} viewportX
- *          @method moveViewportXBy({Number} units) => null
+ *          @method moveViewportXBy({Number} units) => {null}
  * @required PIXI.js
  */
 class Scroller {
@@ -17,7 +17,7 @@ class Scroller {
    * @param {PIXI.Container} stage Stage container
    * @desc Create Far, Mid, Walls, and MapBuilder objects and
    *         initialize viewport x-coorindate to zero
-   * @return null
+   * @return {null}
    */
   constructor(stage) {
     this.far = new Far();
@@ -38,7 +38,7 @@ class Scroller {
    * @method Scroller.setViewportX
    * @param {Number} viewportX X-Coordinate of new viewport
    * @desc Set current viewport for far, mid, and front to new viewport x-coordinate
-   * @return null
+   * @return {null}
    */
   setViewportX(viewportX) {
     this.viewportX = viewportX;
@@ -60,7 +60,7 @@ class Scroller {
    * @method Scroller.moveViewportXBy
    * @param {Number} units Number of coordinate units to move viewport x-coordinate by
    * @desc Move current viewport x-coordinate by number of units
-   * @return null
+   * @return {null}
    */
   moveViewportXBy(units) {
     let newViewportX = this.viewportX + units;

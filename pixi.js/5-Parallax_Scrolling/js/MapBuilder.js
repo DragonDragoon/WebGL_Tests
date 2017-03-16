@@ -5,7 +5,7 @@
  *        @class {WallSlice}
  *          @constant WALL_HEIGHTS
  *          @constructor({Walls} walls)
- *          @method createMap() => null
+ *          @method createMap() => {null}
  * @required none
  */
 class MapBuilder {
@@ -15,7 +15,7 @@ class MapBuilder {
   /**
    * @constructor MapBuilder.constructor
    * @desc Create map of wall slices
-   * @return null
+   * @return {null}
    */
   constructor(walls) {
     this.walls = walls;
@@ -25,7 +25,7 @@ class MapBuilder {
   /**
    * @constructor MapBuilder.createMap
    * @desc Create map of wall slices
-   * @return null
+   * @return {null}
    * @TODO Make infinite and random
    *         Currently has a limited span and is the same SliceType ordering every time
    */
@@ -72,7 +72,7 @@ class MapBuilder {
    * @constructor MapBuilder.createGap
    * @param {Number} spanLength Length of gap in x-coordinate units
    * @desc Create gap between wall spans
-   * @return null
+   * @return {null}
    */
   createGap(spanLength) {
     for (let i = 0; i < spanLength; i++) {
@@ -87,7 +87,7 @@ class MapBuilder {
    * @param {Boolean} noFront Boolean if wall span has front edge
    * @param {Boolean} noBack Boolean if wall has no back edge
    * @desc Create wall span
-   * @return null
+   * @return {null}
    */
   createWallSpan(heightIndex, spanLength, noFront = false, noBack = false) {
     if (noFront == false && spanLength > 0) {
@@ -112,7 +112,7 @@ class MapBuilder {
    * @param {Number} spanALength Length of wall span before step
    * @param {Number} spanBLength Length of wall span after step
    * @desc Create stepped wall span
-   * @return null
+   * @return {null}
    */
   createSteppedWallSpan(heightIndex, spanALength, spanBLength) {
     if (heightIndex < 2) {
@@ -128,7 +128,7 @@ class MapBuilder {
    * @constructor MapBuilder.addWallFront
    * @param {Number} heightIndex Index of y-coordinates for wall height
    * @desc Add front wall to walls at specified y-coordinate
-   * @return null
+   * @return {null}
    */
   addWallFront(heightIndex) {
     let y = MapBuilder.WALL_HEIGHTS[heightIndex];
@@ -139,7 +139,7 @@ class MapBuilder {
    * @constructor MapBuilder.addWallBack
    * @param {Number} heightIndex Index of y-coordinates for wall height
    * @desc Add back wall to walls at specified y-coordinate
-   * @return null
+   * @return {null}
    */
   addWallBack(heightIndex) {
     let y = MapBuilder.WALL_HEIGHTS[heightIndex];
@@ -152,7 +152,7 @@ class MapBuilder {
    * @param {Number} spanLength Length of wall span in x-coordinate units
    * @desc Add mid wall span at specified y-coordinate
    *         alternate between window and decoration
-   * @return null
+   * @return {null}
    */
   addWallMid(heightIndex, spanLength) {
     let y = MapBuilder.WALL_HEIGHTS[heightIndex];
@@ -169,7 +169,7 @@ class MapBuilder {
    * @constructor MapBuilder.addWallStep
    * @param {Number} heightIndex Index of y-coordinates for wall height
    * @desc Add wall step at specified y-coordinate
-   * @return null
+   * @return {null}
    */
   addWallStep(heightIndex) {
     let y = MapBuilder.WALL_HEIGHTS[heightIndex];
