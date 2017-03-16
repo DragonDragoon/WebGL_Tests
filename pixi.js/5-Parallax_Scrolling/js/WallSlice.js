@@ -4,6 +4,7 @@
  * @desc Data structure class to hold wall slice information
  *        @class {WallSlice}
  *          @constant WIDTH
+ *          @constructor()
  * @required none
  */
 class WallSlice {
