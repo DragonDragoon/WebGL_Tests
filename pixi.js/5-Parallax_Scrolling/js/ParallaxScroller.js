@@ -2,7 +2,7 @@
  * @class ParallaxScroller.js
  * @author William Woodard
  * @desc Main class object for scroller
- *        @class ParallaxScroller
+ *        @class {ParallaxScroller}
  *          @constant MIN_SCROLL_SPEED, MAX_SCROLL_SPEED, SCROLL_ACCELERATION
  *          @constructor()
  *          @method update() => null

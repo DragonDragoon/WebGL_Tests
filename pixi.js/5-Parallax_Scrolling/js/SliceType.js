@@ -2,7 +2,7 @@
  * @name SliceType.js
  * @author William Woodard
  * @desc Class enumerator for front wall slice types
- *        @class SliceType
+ *        @class {SliceType}
  * @required none
  */
 class SliceType {

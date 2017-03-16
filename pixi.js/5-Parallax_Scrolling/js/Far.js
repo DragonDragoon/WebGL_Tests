@@ -2,8 +2,8 @@
  * @name Far.js
  * @author William Woodard
  * @desc Class manages far range parallax sprite
- *        @class Far
- *        @extends PIXI.extras.TilingSprite
+ *        @class {Far}
+ *        @extends {PIXI.extras.TilingSprite}
  *          @constructor()
  *          @method setViewportX({Number} newViewportX) => null
  * @required PIXI.js

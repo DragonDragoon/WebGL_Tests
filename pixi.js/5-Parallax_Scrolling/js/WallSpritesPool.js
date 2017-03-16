@@ -2,7 +2,7 @@
  * @name WallSpritesPool.js
  * @author William Woodard
  * @desc Class holds pool data structure for sprite memory allocation
- *        @class WallSpritesPool
+ *        @class {WallSpritesPool}
  *          @constructor()
  *          @method create() => null
  *          @method add({SliceType} type) => null

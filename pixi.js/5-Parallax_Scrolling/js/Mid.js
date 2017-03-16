@@ -2,8 +2,8 @@
  * @name Mid.js
  * @author William Woodard
  * @desc Class manages mid range parallax sprite
- *        @class Mid
- *        @extends PIXI.extras.TilingSprite
+ *        @class {Mid}
+ *        @extends {PIXI.extras.TilingSprite}
  *          @constructor()
  *          @method setViewportX({Number} newViewportX) => null
  * @required PIXI.js

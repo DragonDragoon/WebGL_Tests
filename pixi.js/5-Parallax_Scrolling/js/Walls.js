@@ -1,3 +1,15 @@
+/**
+ * @name Walls.js
+ * @author William Woodard
+ * @desc Class manages wall slices in front parallax scroller
+ *        @class {Walls}
+ *        @extends {PIXI.Container}
+ *          @constructor({PIXI.Container} stage)
+ *          @method setViewportX({Number} viewportX) => null
+ *          @method getViewportX() => {Number} viewportX
+ *          @method moveViewportXBy({Number} units) => null
+ * @required PIXI.js
+ */
 class Walls extends PIXI.Container {
   constructor() {
     super();

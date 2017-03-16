@@ -2,7 +2,7 @@
  * @name Scroller.js
  * @author William Woodard
  * @desc Class manages viewport scrolling
- *        @class Scroller
+ *        @class {Scroller}
  *          @constructor({PIXI.Container} stage)
  *          @method setViewportX({Number} viewportX) => null
  *          @method getViewportX() => {Number} viewportX
