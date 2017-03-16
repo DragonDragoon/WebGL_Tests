@@ -3,7 +3,7 @@
  * @author William Woodard
  * @desc Class holds pool data structure for sprite memory allocation
  *        @class WallSpritesPool
- *          @constructor
+ *          @constructor()
  *          @method create() => null
  *          @method add(type) => null
  *          @method borrow(type, amound, frameID) => PIXI.Sprite

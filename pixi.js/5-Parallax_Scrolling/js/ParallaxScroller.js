@@ -4,7 +4,7 @@
  * @desc Main class object for scroller
  *        @class ParallaxScroller
  *          @constant MIN_SCROLL_SPEED, MAX_SCROLL_SPEED, SCROLL_ACCELERATION
- *          @constructor
+ *          @constructor()
  *          @method update() => null
  *          @method loadSpriteSheet() => null
  *          @method spriteSheetLoaded() => null
