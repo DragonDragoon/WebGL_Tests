@@ -1,5 +1,5 @@
 /**
- * @class ParallaxScroller
+ * @class ParallaxScroller.js
  * @author William Woodard
  * @desc Main class object for scroller
  *        @class ParallaxScroller

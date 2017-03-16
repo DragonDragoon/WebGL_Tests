@@ -1,5 +1,5 @@
 /**
- * Main.js
+ * @name Main.js
  * @global ParallaxScroller => parallax_scroller
  * @desc Listens until DOMContentLoaded event to initialize ParallaxScroller
  */ 

@@ -1,4 +1,25 @@
+/**
+ * @name WallSpritesPool.js
+ * @author William Woodard
+ * @desc Class holds pool data structure for sprite memory allocation
+ *        @class WallSpritesPool
+ *          @constructor
+ *          @method create() => null
+ *          @method add(type) => null
+ *          @method borrow(type, amound, frameID) => PIXI.Sprite
+ *          @method return(type, sprite) => null
+ *          @method shuffle(array) => null
+ * @required PIXI.js
+ */
 class WallSpritesPool {
+  // Hopefully the ES7 specfication will give us better class implementation
+  // Still have to put const/static outside of class, after it it declared (see bottom)
+
+  /**
+   * @constructor WallSpritesPool.constructor
+   * @desc Create all needed sprites and add them to pool allocation
+   * @return null
+   */
   constructor() {
     this.create(SliceType.WINDOW);
     this.create(SliceType.DECORATION);
@@ -7,42 +28,51 @@ class WallSpritesPool {
     this.create(SliceType.STEP);
   }
 
+  /**
+   * @method WallSpritesPool.create
+   * @param {SliceType} type Enumerator of wall slice type
+   * @desc Determine the type of sprite and then
+   *         create pool for sprite type
+   *         allocate set amount of slice type to pool
+   *         shuffle pool
+   * @return null
+   */
   create(type) {
     switch (type) {
       case SliceType.FRONT:
         this.frontEdges = [];
 
-        this.add(SliceType.FRONT, 2, 'edge_01');
-        this.add(SliceType.FRONT, 2, 'edge_02');
+        this.add(SliceType.FRONT, WallSpritesPool.NUM_FRONT, 'edge_01');
+        this.add(SliceType.FRONT, WallSpritesPool.NUM_FRONT, 'edge_02');
 
         this.shuffle(this.frontEdges);
         break;
       case SliceType.BACK:
         this.backEdges = [];
 
-        this.add(SliceType.BACK, 2, 'edge_01');
-        this.add(SliceType.BACK, 2, 'edge_02');
+        this.add(SliceType.BACK, WallSpritesPool.NUM_BACK, 'edge_01');
+        this.add(SliceType.BACK, WallSpritesPool.NUM_BACK, 'edge_02');
 
         this.shuffle(this.backEdges);
         break;
       case SliceType.STEP:
         this.steps = [];
-        this.add(SliceType.STEP, 2, 'step_01');
+        this.add(SliceType.STEP, WallSpritesPool.NUM_STEP, 'step_01');
         break;
       case SliceType.DECORATION:
         this.decorations = [];
 
-        this.add(SliceType.DECORATION, 6, 'decoration_01');
-        this.add(SliceType.DECORATION, 6, 'decoration_02');
-        this.add(SliceType.DECORATION, 6, 'decoration_03');
+        this.add(SliceType.DECORATION, WallSpritesPool.NUM_DECORATION, 'decoration_01');
+        this.add(SliceType.DECORATION, WallSpritesPool.NUM_DECORATION, 'decoration_02');
+        this.add(SliceType.DECORATION, WallSpritesPool.NUM_DECORATION, 'decoration_03');
 
         this.shuffle(this.decorations);
         break;
       case SliceType.WINDOW:
         this.windows = [];
 
-        this.add(SliceType.WINDOW, 6, 'window_01');
-        this.add(SliceType.WINDOW, 6, 'window_02');
+        this.add(SliceType.WINDOW, WallSpritesPool.NUM_WINDOW, 'window_01');
+        this.add(SliceType.WINDOW, WallSpritesPool.NUM_WINDOW, 'window_02');
 
         this.shuffle(this.windows);
         break;
@@ -51,6 +81,17 @@ class WallSpritesPool {
     }
   }
 
+  /**
+   * @method WallSpritesPool.add
+   * @param {SliceType} type Enumerator of wall slice type
+   * @param {Number} amount Amount of sprites to push
+   * @param {String} frameID String ID of sprite (from .json file)
+   * @desc Determine the type of sprite and then
+   *         for amount of sprites to add,
+   *           create sprite from frame ID
+   *           push sprite into pool
+   * @return null
+   */
   add(type, amount, frameID) {
     switch (type) {
       case SliceType.FRONT:
@@ -91,6 +132,13 @@ class WallSpritesPool {
     }
   }
 
+  /**
+   * @method WallSpritesPool.borrow
+   * @param {SliceType} type Enumerator of wall slice type
+   * @desc Determine the type of sprite and then
+   *         remove sprite from pool and return it
+   * @return {PIXI.Sprite} Sprite borrowed from pool
+   */
   borrow(type) {
     switch (type) {
       case SliceType.FRONT:
@@ -113,6 +161,14 @@ class WallSpritesPool {
     }
   }
 
+  /**
+   * @method WallSpritesPool.return
+   * @param {SliceType} type Enumerator of wall slice type
+   * @param {PIXI.Sprite} sprite Sprite to return to pool
+   * @desc Determine the type of sprite and then
+   *         push sprite into pool
+   * @return null
+   */
   return(type, sprite) {
     switch (type) {
       case SliceType.FRONT:
@@ -135,6 +191,13 @@ class WallSpritesPool {
     }
   }
 
+  /**
+   * @method WallSpritesPool.shuffle
+   * @param {Array} array Pool of sprites
+   * @desc Shuffle array of sprites for randomness
+   *       Destroys array integrity
+   * @return null
+   */
   shuffle(array) {
     let len = array.length;
     let shuffles = len * 3;
@@ -145,3 +208,10 @@ class WallSpritesPool {
     }
   }
 }
+
+// Constants (Why do I still have to do this in ES6? Don't call these classes!)
+WallSpritesPool.NUM_FRONT = 2;
+WallSpritesPool.NUM_BACK = 2;
+WallSpritesPool.NUM_STEP = 2;
+WallSpritesPool.NUM_DECORATION = 6;
+WallSpritesPool.NUM_WINDOW = 6;
