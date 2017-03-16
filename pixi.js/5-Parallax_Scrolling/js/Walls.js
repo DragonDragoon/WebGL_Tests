@@ -2,7 +2,6 @@ function Walls() {
   PIXI.Container.call(this);
 
   this.pool = new WallSpritesPool();
-  //this.createLookupTables();
 
   this.slices = [];
 
