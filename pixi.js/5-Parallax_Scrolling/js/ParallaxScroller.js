@@ -57,7 +57,7 @@ class ParallaxScroller {
 
     this.renderer.render(this.stage);
     requestAnimationFrame(() => this.update());
-  };
+  }
 
   /**
    * @method ParallaxScroller.loadSpriteSheet
@@ -72,7 +72,7 @@ class ParallaxScroller {
     loader.add('bg-far', 'res/bg-far.png');
     loader.once('complete', () => this.spriteSheetLoaded());
     loader.load();
-  };
+  }
 
   /**
    * @method ParallaxScroller.loadSpriteSheet
@@ -85,7 +85,7 @@ class ParallaxScroller {
     this.scroller = new Scroller(this.stage);
 
     requestAnimationFrame(() => this.update());
-  };
+  }
 
   /**
    * @method ParallaxScroller.loadSpriteSheet
@@ -113,7 +113,7 @@ class ParallaxScroller {
 
       this.stage.addChild(sprite);
     }
-  };
+  }
 
   /**
    * @method ParallaxScroller.returnWallSprites
@@ -135,7 +135,7 @@ class ParallaxScroller {
     }
 
     this.wallSlices = [];
-  };
+  }
 }
 
 // Constants (Why do I still have to do this in ES6? Don't call these classes!)
