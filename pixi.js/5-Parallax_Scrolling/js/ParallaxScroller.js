@@ -8,7 +8,7 @@
  *          @method update() => null
  *          @method loadSpriteSheet() => null
  *          @method spriteSheetLoaded() => null
- *          @method borrowWallSprites(num) => null
+ *          @method borrowWallSprites({Number} num) => null
  *          @method returnWallSprites() => null
  * @required PIXI.js
  */

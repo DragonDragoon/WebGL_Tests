@@ -5,7 +5,7 @@
  *        @class Mid
  *        @extends PIXI.extras.TilingSprite
  *          @constructor()
- *          @method setViewportX(newViewportX) => null
+ *          @method setViewportX({Number} newViewportX) => null
  * @required PIXI.js
  */
 class Mid extends PIXI.extras.TilingSprite {

@@ -5,10 +5,10 @@
  *        @class WallSpritesPool
  *          @constructor()
  *          @method create() => null
- *          @method add(type) => null
- *          @method borrow(type, amound, frameID) => PIXI.Sprite
- *          @method return(type, sprite) => null
- *          @method shuffle(array) => null
+ *          @method add({SliceType} type) => null
+ *          @method borrow({SliceType} type, {Number} amount, {String} frameID) => {PIXI.Sprite} *
+ *          @method return({SliceType} type, {PIXI.Sprite} sprite) => null
+ *          @method shuffle({Array} array) => null
  * @required PIXI.js
  */
 class WallSpritesPool {

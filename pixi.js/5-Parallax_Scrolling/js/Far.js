@@ -5,7 +5,7 @@
  *        @class Far
  *        @extends PIXI.extras.TilingSprite
  *          @constructor()
- *          @method setViewportX(newViewportX) => null
+ *          @method setViewportX({Number} newViewportX) => null
  * @required PIXI.js
  */
 class Far extends PIXI.extras.TilingSprite {
